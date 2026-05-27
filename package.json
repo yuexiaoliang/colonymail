@@ -6,7 +6,7 @@
   "type": "commonjs",
   "scripts": {
     "demo": "node examples/demo.js",
-    "release": "bumpp && npm publish"
+    "release": "bumpp"
   },
   "bin": {
     "colonymail": "bin/colonymail.js"
