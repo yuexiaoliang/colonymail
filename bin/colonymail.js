@@ -64,6 +64,7 @@ Commands:
   mark-read --uid <n[,n...]>  Mark email(s) as read
   mark-unread --uid <n[,n...]> Mark email(s) as unread
   delete --uid <n[,n...]>     Delete email(s)
+  whoami                      Show current config (email, servers)
   setup                       Copy .env to ~/.config/colonymail/
 
 Send options:
@@ -98,6 +99,19 @@ Config:
 }
 
 async function main() {
+  if (cmd === 'whoami') {
+    const config = loadConfig();
+    const configSource = process.env.MAIL_USER ? 'env' : (fs.existsSync(path.resolve('.env')) ? 'local' : (fs.existsSync(GLOBAL_ENV) ? 'global' : 'none'));
+    out({
+      success: true,
+      email: config.user || null,
+      configSource,
+      imap: config.user ? { host: config.imap.host, port: config.imap.port, secure: config.imap.secure } : null,
+      smtp: config.user ? { host: config.smtp.host, port: config.smtp.port, secure: config.smtp.secure } : null
+    });
+    return;
+  }
+
   if (cmd === 'setup') {
     if (!fs.existsSync(GLOBAL_DIR)) {
       fs.mkdirSync(GLOBAL_DIR, { recursive: true });
