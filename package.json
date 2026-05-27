@@ -3,6 +3,7 @@
   "version": "0.1.0-beta.2",
   "description": "Agent-friendly mail toolkit via IMAP/SMTP",
   "main": "index.js",
+  "repository": "yuexiaoliang/colonymail",
   "type": "commonjs",
   "scripts": {
     "demo": "node examples/demo.js",
