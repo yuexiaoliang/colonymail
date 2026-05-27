@@ -1,6 +1,6 @@
 {
   "name": "colonymail",
-  "version": "0.1.0-beta.2",
+  "version": "0.1.0-beta.3",
   "description": "Agent-friendly mail toolkit via IMAP/SMTP",
   "main": "index.js",
   "repository": "yuexiaoliang/colonymail",
