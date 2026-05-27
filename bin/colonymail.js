@@ -41,8 +41,15 @@ function fail(msg, code = 1) {
   process.exit(code);
 }
 
+const { version } = require('../package.json');
+
 const argv = minimist(process.argv.slice(2));
 const cmd = argv._[0];
+
+if (argv.version || argv.v) {
+  console.log(version);
+  process.exit(0);
+}
 
 if (!cmd || cmd === 'help' || argv.help || argv.h) {
   console.log(`colonymail - Agent-friendly email CLI
@@ -71,6 +78,10 @@ Send options:
 
 Fetch options:
   --limit <n>                 Max results (default: 10)
+
+Options:
+  --version, -v               Show version
+  --help, -h                  Show help
 
 Examples:
   colonymail send --to a@b.com --subject hi --text hello
